@@ -1,0 +1,9 @@
+{
+  "name": "@tic-tac-toe/game-state",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "license": "MIT"
+}
