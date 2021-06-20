@@ -1,4 +1,4 @@
 export enum PlayerMark {
-  O,
-  X,
+  O = 'O',
+  X = 'X',
 }
