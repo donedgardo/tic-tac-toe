@@ -14,6 +14,7 @@ describe('Game Board', function () {
     const positions = board.getEmptyIndexes();
     board.play(positions[0], PlayerMark.O);
     expect(board.isBoardIndexEmpty(positions[0])).toBeFalsy();
+    expect(board.getPlayerMarkIndexes(PlayerMark.O)).toStrictEqual([0]);
   });
   it('can adds the correct player mark to board index', () => {
     const positions = board.getEmptyIndexes();
