@@ -35,5 +35,7 @@ describe('Game Board', function () {
     board.play(0, PlayerMark.O);
     board.play(1, PlayerMark.X);
     expect(board.prettyPrint()).toBe('O|X| \n | | \n | | \n');
+    board.play(2, PlayerMark.X);
+    expect(board.prettyPrint()).toBe('O|X|X\n | | \n | | \n');
   });
 });
