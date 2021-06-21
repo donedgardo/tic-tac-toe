@@ -9,39 +9,21 @@ export class AggressiveAiPlayer extends AiPlayer {
   }
   getPlayIndex(board: Board): number {
     const randomCorner = this.getRandomAvailableCorner(board);
-    if (board.isEmpty() && randomCorner !== null) {
-      console.log('returning random corner');
-      return randomCorner;
-    }
+    console.log('randomCorner', randomCorner);
+    if (board.isEmpty() && randomCorner !== null) return randomCorner;
 
     const nextWinningPlays = this.getNextWinningPlayIndexes(board);
-    if (nextWinningPlays.length > 0) {
-      console.log('returning next winning play');
-      return nextWinningPlays[0];
-    }
+    if (nextWinningPlays.length > 0) return nextWinningPlays[0];
 
     const crossWinningPlay = this.getCrossWinPlay(board);
-    if (crossWinningPlay !== null) {
-      console.log('returning cross win play');
-      return crossWinningPlay;
-    }
+    if (crossWinningPlay !== null) return crossWinningPlay;
 
-    if (this.shouldStopTrap(board) && board.isBoardIndexEmpty(4)) {
-      console.log('stop trap');
-      return 4;
-    }
+    if (!this.wentFirst(board) && board.isBoardIndexEmpty(4)) return 4;
 
     const trapIndex = this.getTrap(board);
-    if (trapIndex !== null) {
-      console.log('setting trap');
-      return trapIndex;
-    }
+    if (trapIndex !== null) return trapIndex;
 
-    return randomCorner || board.getEmptyIndexes()[0];
-  }
-
-  private shouldStopTrap(board: Board) {
-    return board.getPlayerMarkIndexes(this.getOpponentMark()).length === 1;
+    return randomCorner || get_random(board.getEmptyIndexes());
   }
 
   getCornersAvailable(board: Board): number[] {
@@ -49,7 +31,14 @@ export class AggressiveAiPlayer extends AiPlayer {
   }
 
   getRandomAvailableCorner(board: Board): number | null {
-    return get_random(this.getCornersAvailable(board)) || null;
+    const availableCorners = this.getCornersAvailable(board);
+    if (availableCorners.length === 0) return null;
+    const randomCorner = get_random(availableCorners);
+    return randomCorner;
+  }
+
+  private wentFirst(board: Board): boolean {
+    return board.getEmptyIndexes().length % 2 !== 0;
   }
 
   private getTrap(board: Board): number | null {
@@ -73,14 +62,10 @@ export class AggressiveAiPlayer extends AiPlayer {
     let crossWinPlay: number | null = null;
     const availableCorners = this.getCornersAvailable(board);
     availableCorners.forEach((corner) => {
-      console.log(`Checking ${corner} for cross play`);
       const predictionBoard = new Board(board.getState());
       predictionBoard.play(corner, this.mark);
       const winningIndexes = this.getNextWinningPlayIndexes(predictionBoard);
       if (winningIndexes.length < 2) return;
-      console.log(
-        `Found cross winning play with prediction board \n${predictionBoard.prettyPrint()}`,
-      );
       crossWinPlay = corner;
     });
     return crossWinPlay;

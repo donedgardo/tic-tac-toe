@@ -36,6 +36,7 @@ describe('AggressiveAiPlayer', function () {
   });
   it('should pick random corner if goes first', () => {
     const firstPlay = aggressiveAiPlayer.getPlayIndex(game.getBoard());
+    console.log(game.getBoard().prettyPrint());
     let availableCorners = aggressiveAiPlayer.getCornersAvailable(
       game.getBoard(),
     );
@@ -62,7 +63,6 @@ describe('AggressiveAiPlayer', function () {
     setTrap(aggressiveAiPlayer, game);
     let turn = 2;
     while (!game.isGameOver()) {
-      console.log(game.getBoard().prettyPrint());
       if (turn % 2 === 0) {
         const position = aggressiveAiPlayer.getPlayIndex(game.getBoard());
         game.play(position, aggressiveAiPlayer.mark);
