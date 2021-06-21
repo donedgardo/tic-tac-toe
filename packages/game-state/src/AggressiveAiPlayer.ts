@@ -56,7 +56,7 @@ export class AggressiveAiPlayer extends AiPlayer {
     let trapIndex: number | null = null;
     const availableCorners = this.getCornersAvailable(board);
     availableCorners.forEach((corner) => {
-      if (trapIndex) return;
+      if (trapIndex !== null) return;
       const predictionBoard = new Board(board.getState());
       predictionBoard.play(corner, this.mark);
       let winningIndexes = this.getNextWinningPlayIndexes(predictionBoard);
