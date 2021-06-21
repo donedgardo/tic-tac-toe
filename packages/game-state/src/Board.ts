@@ -4,18 +4,26 @@ import { GameStateErrors } from './GameStateErrors';
 import { winningPlaysMap } from './winningPlaysMap';
 
 export class Board {
-  state: BoardState = [null, null, null, null, null, null, null, null, null];
-
-  getEmptyIndexes(): number[] {
-    const playablePositions: number[] = [];
-    for (let i = 0; i < this.state.length; i++) {
-      if (this.isBoardIndexEmpty(i)) playablePositions.push(i);
-    }
-    return playablePositions;
+  private readonly state: BoardState;
+  constructor(
+    state: BoardState = [null, null, null, null, null, null, null, null, null],
+  ) {
+    this.state = [...state];
+  }
+  getState() {
+    return this.state;
   }
 
-  isBoardIndexEmpty(i: number) {
-    return this.state[i] === null;
+  getEmptyIndexes(): number[] {
+    const emptyIndexes: number[] = [];
+    for (let i = 0; i < this.state.length; i++) {
+      if (this.isBoardIndexEmpty(i)) emptyIndexes.push(i);
+    }
+    return emptyIndexes;
+  }
+
+  isBoardIndexEmpty(index: number) {
+    return this.state[index] === null;
   }
 
   play(index: number, mark: PlayerMark) {

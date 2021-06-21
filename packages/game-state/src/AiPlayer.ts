@@ -11,12 +11,12 @@ export abstract class AiPlayer extends Player {
     return this.mark === PlayerMark.X ? PlayerMark.O : PlayerMark.X;
   }
 
-  protected getNextWinningPlayIndex(board: Board) {
-    let nextWinningPlay = null;
+  getNextWinningPlayIndexes(board: Board): number[] {
+    let nextWinningPlays: number[] = [];
     const availablePlayIndexes = board.getEmptyIndexes();
     const opponentMark = this.getOpponentMark();
 
-    availablePlayIndexes.some((boardIndex) => {
+    availablePlayIndexes.forEach((boardIndex) => {
       const aiWinningPlay = board.isWinningIndexForPlayer(
         this.mark,
         boardIndex,
@@ -25,9 +25,9 @@ export abstract class AiPlayer extends Player {
         opponentMark,
         boardIndex,
       );
-      if (opponentHasWinningPlay || aiWinningPlay) nextWinningPlay = boardIndex;
-      return opponentHasWinningPlay || aiWinningPlay;
+      if (opponentHasWinningPlay || aiWinningPlay)
+        nextWinningPlays.push(boardIndex);
     });
-    return nextWinningPlay;
+    return nextWinningPlays;
   }
 }

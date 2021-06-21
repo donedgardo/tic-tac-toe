@@ -17,3 +17,11 @@ export const winningPlaysMap: { [key: number]: Array<number[]> } = {
   7: [BOTTOM_ROW, MIDDLE_COLUMN],
   8: [BOTTOM_ROW, RIGHT_COLUMN, DIAGONAL_DOWN],
 };
+
+export const weakPoints = [1, 3, 5, 7];
+
+export const corners = [0, 2, 6, 8];
+
+export function get_random<T>(list: T[]): T {
+  return list[Math.floor(Math.random() * list.length)];
+}

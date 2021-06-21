@@ -36,7 +36,7 @@ describe('Game State', function () {
   });
   describe('getBoard', () => {
     it('should return board state', () => {
-      expect(game.getBoard().state).toStrictEqual([
+      expect(game.getBoard().getState()).toStrictEqual([
         null,
         null,
         null,
