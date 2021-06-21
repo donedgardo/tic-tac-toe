@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for GameState.ts</title>
+    <title>Code coverage report for AiPlayer.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> GameState.ts</h1>
+        <h1><a href="index.html">All files</a> AiPlayer.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -86,62 +86,80 @@
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">37x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">37x</span>
-<span class="cline-any cline-yes">37x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">73x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Board } from './Board';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">185x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">185x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">65x</span>
+<span class="cline-any cline-yes">65x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">65x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Player } from './Player';
+import { Board } from './Board';
 import { PlayerMark } from './PlayerMark';
 &nbsp;
-export default class GameState {
-  private board: Board;
-  private isOver: boolean = false;
-  private playerWinner: PlayerMark | null = null;
-  constructor() {
-    this.board = new Board();
-  }
-  play(boardIndex: number, playerMark: PlayerMark) {
-    if (this.board.isWinningIndexForPlayer(playerMark, boardIndex)) {
-      this.isOver = true;
-      this.playerWinner = playerMark;
-    }
-    this.board.play(boardIndex, playerMark);
-    if (this.board.getEmptyIndexes().length === 0) this.isOver = true;
-  }
-  isGameOver(): boolean {
-    return this.isOver;
-  }
-  getWinner() {
-    return this.playerWinner;
+export abstract class AiPlayer extends Player {
+  protected constructor(mark: PlayerMark) {
+    super(mark);
   }
 &nbsp;
-  getBoard() {
-    return this.board;
+  getOpponentMark(): PlayerMark {
+    return this.mark === PlayerMark.X ? PlayerMark.O : <span class="branch-1 cbranch-no" title="branch not covered" >PlayerMark.X;</span>
+  }
+&nbsp;
+  getNextWinningPlayIndexes(board: Board): number[] {
+    let nextWinningPlays: number[] = [];
+    const availablePlayIndexes = board.getEmptyIndexes();
+    availablePlayIndexes.forEach((boardIndex) =&gt; {
+      const aiWinningPlay = board.isWinningIndexForPlayer(
+        this.mark,
+        boardIndex,
+      );
+      if (aiWinningPlay) nextWinningPlays.push(boardIndex);
+    });
+    if (nextWinningPlays.length &gt; 0) return nextWinningPlays;
+    availablePlayIndexes.forEach((boardIndex) =&gt; {
+      const opponentMark = this.getOpponentMark();
+      const opponentHasWinningPlay = board.isWinningIndexForPlayer(
+        opponentMark,
+        boardIndex,
+      );
+      if (opponentHasWinningPlay) nextWinningPlays.push(boardIndex);
+    });
+    return nextWinningPlays;
   }
 }
 &nbsp;</pre></td></tr></table></pre>
