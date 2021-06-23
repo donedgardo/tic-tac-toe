@@ -19,7 +19,7 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a
-          href="https://github.com/donedgardo"
+          href="https://github.com/donedgardo/tic-tac-toe"
           target="_blank"
           rel="noopener noreferrer"
         >
