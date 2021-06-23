@@ -73,7 +73,7 @@ export const weakPoints = [1, 3, 5, 7];
 
 export const corners = [0, 2, 6, 8];
 
-export const oppositeCornerMap = {0: 8, 2:6, 6:2, 8:0 }
+export const oppositeCornerMap: {[key:number]: number} = {0: 8, 2:6, 6:2, 8:0 }
 
 export function get_random<T>(list: T[]): T {
   return list[Math.floor(Math.random() * list.length)];

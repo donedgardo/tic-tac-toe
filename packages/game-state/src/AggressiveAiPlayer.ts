@@ -19,7 +19,7 @@ export class AggressiveAiPlayer extends AiPlayer {
 
     if(this.shouldPlayOppositeCorner(board)) {
       const cornersTaken = board.getPlayerMarkIndexes(this.mark)
-      return Number(oppositeCornerMap[cornersTaken[0]])
+      return oppositeCornerMap[cornersTaken[0]]
     }
 
     if (this.shouldPlayMiddle(board)) return 4;
