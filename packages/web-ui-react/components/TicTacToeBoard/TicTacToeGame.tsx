@@ -22,8 +22,8 @@ const TicTacToeGame = ({
     [aiPlayerMark],
   );
   const [boardState, setBoardState] = useState<BoardState>();
-  const [winLane, setWinLane] = useState<WINNING_PLAY_LABELS | undefined>(
-    undefined,
+  const [winLane, setWinLane] = useState<WINNING_PLAY_LABELS | null>(
+    null,
   );
   const [winner, setWinner] = useState<PlayerMark|null>(null);
   const [isGameOver, setIsGameOver] = useState<boolean>(false);

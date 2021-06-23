@@ -23,7 +23,8 @@ export class AggressiveAiPlayer extends AiPlayer {
     }
 
     if (this.shouldPlayMiddle(board)) return 4;
-    if(this.shouldAvoidGettingTrapped(board)) return this.getRandomAvailableWeakPosition(board)
+    const weakPositionAvailable = this.getRandomAvailableWeakPosition(board)
+    if(this.shouldAvoidGettingTrapped(board) && weakPositionAvailable) return weakPositionAvailable
 
     const trapIndex = this.getTrap(board);
     if (trapIndex !== null) return trapIndex;

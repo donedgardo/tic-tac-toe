@@ -5,7 +5,7 @@ import {WINNING_PLAY_LABELS} from "./winningPlaysByPositionMap";
 export default class GameState {
   private board: Board;
   private isOver: boolean = false;
-  private winningPlay: WINNING_PLAY_LABELS = null;
+  private winningPlay: WINNING_PLAY_LABELS | null = null;
   private playerWinner: PlayerMark | null = null;
   constructor() {
     this.board = new Board();
@@ -31,7 +31,7 @@ export default class GameState {
     return this.board;
   }
 
-  getWinningPlayEnum(): WINNING_PLAY_LABELS | undefined {
+  getWinningPlayEnum(): WINNING_PLAY_LABELS | null {
     return this.winningPlay;
   }
 

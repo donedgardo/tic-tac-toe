@@ -22,7 +22,7 @@ const TicTacToeBoard = ({
   onPositionClicked,
 }: {
   boardState?: BoardState;
-  winLane?: WINNING_PLAY_LABELS;
+  winLane?: WINNING_PLAY_LABELS | null;
   onPositionClicked?: (number: number) => void;
 }) => {
   if (!boardState || boardState.length !== 9) return null;
