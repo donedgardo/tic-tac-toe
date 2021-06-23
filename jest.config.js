@@ -3,9 +3,5 @@
 
 module.exports = {
   projects: ['packages/*'],
-  moduleFileExtensions: ['js', 'ts', 'json', 'vue'],
-  transform: {
-    '^.+\\.js$': 'babel-jest',
-    '^.+\\.vue$': 'vue-jest',
-  },
+  moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
 };

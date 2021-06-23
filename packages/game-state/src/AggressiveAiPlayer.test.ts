@@ -1,7 +1,7 @@
 import GameState from './GameState';
-import { PlayerMark } from './PlayerMark';
-import { AggressiveAiPlayer } from './AggressiveAiPlayer';
-import { get_random, weakPoints } from './winningPlaysMap';
+import {PlayerMark} from './PlayerMark';
+import {AggressiveAiPlayer} from './AggressiveAiPlayer';
+import {corners, get_random, oppositeCornerMap, weakPoints} from './winningPlaysByPositionMap';
 
 function setTrap(aggressiveAiPlayer: AggressiveAiPlayer, game: GameState) {
   const firstPlay = aggressiveAiPlayer.getPlayIndex(game.getBoard());
@@ -13,12 +13,16 @@ function setTrap(aggressiveAiPlayer: AggressiveAiPlayer, game: GameState) {
   );
 }
 
+
 describe('AggressiveAiPlayer', function () {
   let game: GameState;
   let aggressiveAiPlayer: AggressiveAiPlayer;
+  let secondAiPlayer: AggressiveAiPlayer;
   beforeEach(() => {
     game = new GameState();
     aggressiveAiPlayer = new AggressiveAiPlayer(PlayerMark.X);
+    secondAiPlayer = new AggressiveAiPlayer(PlayerMark.O);
+
   });
   it('is Unbeatable', () => {
     let turn: number = 0;
@@ -27,8 +31,8 @@ describe('AggressiveAiPlayer', function () {
         const position = aggressiveAiPlayer.getPlayIndex(game.getBoard());
         game.play(position, aggressiveAiPlayer.mark);
       } else {
-        const position = aggressiveAiPlayer.getPlayIndex(game.getBoard());
-        game.play(position, aggressiveAiPlayer.getOpponentMark());
+        const position = secondAiPlayer.getPlayIndex(game.getBoard());
+        game.play(position, secondAiPlayer.mark);
       }
       turn++;
     }
@@ -36,7 +40,6 @@ describe('AggressiveAiPlayer', function () {
   });
   it('should pick random corner if goes first', () => {
     const firstPlay = aggressiveAiPlayer.getPlayIndex(game.getBoard());
-    console.log(game.getBoard().prettyPrint());
     let availableCorners = aggressiveAiPlayer.getCornersAvailable(
       game.getBoard(),
     );
@@ -74,4 +77,11 @@ describe('AggressiveAiPlayer', function () {
     }
     expect(game.getWinner()).toBe(aggressiveAiPlayer.mark);
   });
+  it.each([corners])('should play opposite corner of i% if opponent played in the middle second turn', (corner) => {
+    game.play(corner, aggressiveAiPlayer.mark);
+    game.play(4, aggressiveAiPlayer.getOpponentMark());
+    expect(aggressiveAiPlayer.getPlayIndex(game.getBoard())).toBe(oppositeCornerMap[corner])
+  })
+
+
 });

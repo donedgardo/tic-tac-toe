@@ -1,5 +1,6 @@
 import GameState from './GameState';
 import { PlayerMark } from './PlayerMark';
+import {WINNING_PLAY_LABELS} from "./winningPlaysByPositionMap";
 
 describe('Game State', function () {
   let game: GameState;
@@ -34,6 +35,22 @@ describe('Game State', function () {
       expect(game.getWinner()).toBe(mark);
     });
   });
+  describe('getWinningPlays', () => {
+    it('should be null if no winner is in game', () => {
+      const mark = PlayerMark.X;
+      game.play(0, mark);
+      game.play(3, mark);
+      game.play(8, mark);
+      expect(game.getWinningPlayEnum()).toBeNull();
+    });
+    it('should be the correct play if won on that play', () => {
+      const mark = PlayerMark.O;
+      game.play(6, mark);
+      game.play(7, mark);
+      game.play(8, mark);
+      expect(game.getWinningPlayEnum()).toBe(WINNING_PLAY_LABELS.BOTTOM_ROW);
+    });
+  });
   describe('getBoard', () => {
     it('should return board state', () => {
       expect(game.getBoard().getState()).toStrictEqual([
@@ -49,4 +66,20 @@ describe('Game State', function () {
       ]);
     });
   });
+  describe('reset', () => {
+    it('should return empty board state', () => {
+      game.reset()
+      expect(game.getBoard().getState()).toStrictEqual([
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+      ]);
+    });
+  })
 });

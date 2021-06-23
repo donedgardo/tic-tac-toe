@@ -1,7 +1,7 @@
 import { BoardState } from './BoardState';
 import { PlayerMark } from './PlayerMark';
 import { GameStateErrors } from './GameStateErrors';
-import { winningPlaysMap } from './winningPlaysMap';
+import {WINNING_PLAY_LABELS, winningPlaysByPositionMap} from './winningPlaysByPositionMap';
 
 export class Board {
   private readonly state: BoardState;
@@ -44,19 +44,21 @@ export class Board {
     return this.state[index] === mark;
   }
 
-  isWinningIndexForPlayer(playerMark: PlayerMark, boardIndex: number) {
+  isWinningIndexForPlayer(playerMark: PlayerMark, boardIndex: number): WINNING_PLAY_LABELS | null {
     let isWinningIndex = false;
-    winningPlaysMap[boardIndex].some((winningPlays) => {
-      const boardStateAtWinningPlay = winningPlays.map((winningPlayIndex) => {
+    let winningPlayLabel: WINNING_PLAY_LABELS | null = null;
+    winningPlaysByPositionMap[boardIndex].some((winningPlays) => {
+      const boardStateAtWinningPlay = winningPlays.values.map((winningPlayIndex) => {
         if (winningPlayIndex === boardIndex) return playerMark;
         return this.state[winningPlayIndex];
       });
       isWinningIndex = boardStateAtWinningPlay.every(
         (mark) => mark === playerMark,
       );
+      if(isWinningIndex) winningPlayLabel = winningPlays.label
       return isWinningIndex;
     });
-    return isWinningIndex;
+    return winningPlayLabel;
   }
 
   isEmpty(): boolean {

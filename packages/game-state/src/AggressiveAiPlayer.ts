@@ -1,7 +1,7 @@
 import { Board } from './Board';
 import { PlayerMark } from './PlayerMark';
 import { AiPlayer } from './AiPlayer';
-import { corners, get_random, weakPoints } from './winningPlaysMap';
+import {corners, get_random, oppositeCornerMap, weakPoints} from './winningPlaysByPositionMap';
 
 export class AggressiveAiPlayer extends AiPlayer {
   constructor(mark: PlayerMark) {
@@ -9,7 +9,6 @@ export class AggressiveAiPlayer extends AiPlayer {
   }
   getPlayIndex(board: Board): number {
     const randomCorner = this.getRandomAvailableCorner(board);
-    console.log('randomCorner', randomCorner);
     if (board.isEmpty() && randomCorner !== null) return randomCorner;
 
     const nextWinningPlays = this.getNextWinningPlayIndexes(board);
@@ -18,12 +17,26 @@ export class AggressiveAiPlayer extends AiPlayer {
     const crossWinningPlay = this.getCrossWinPlay(board);
     if (crossWinningPlay !== null) return crossWinningPlay;
 
-    if (!this.wentFirst(board) && board.isBoardIndexEmpty(4)) return 4;
+    if(this.shouldPlayOppositeCorner(board)) {
+      const cornersTaken = board.getPlayerMarkIndexes(this.mark)
+      return oppositeCornerMap[cornersTaken[0]]
+    }
+
+    if (this.shouldPlayMiddle(board)) return 4;
+    if(this.shouldAvoidGettingTrapped(board)) return this.getRandomAvailableWeakPosition(board)
 
     const trapIndex = this.getTrap(board);
     if (trapIndex !== null) return trapIndex;
 
     return randomCorner || get_random(board.getEmptyIndexes());
+  }
+
+  private shouldPlayMiddle(board: Board) {
+    return !this.wentFirst(board) && board.isBoardIndexEmpty(4);
+  }
+
+  private shouldPlayOppositeCorner(board: Board) {
+    return this.wentFirst(board) && board.getEmptyIndexes().length === 7 && !board.isBoardIndexEmpty(4);
   }
 
   getCornersAvailable(board: Board): number[] {
@@ -69,5 +82,14 @@ export class AggressiveAiPlayer extends AiPlayer {
       crossWinPlay = corner;
     });
     return crossWinPlay;
+  }
+
+  private shouldAvoidGettingTrapped(board: Board) {
+    return !this.wentFirst(board) && board.getEmptyIndexes().length === 6
+  }
+
+  private getRandomAvailableWeakPosition(board: Board): number | null {
+    const availableWeakPoints = weakPoints.filter((weakPoint) => board.isBoardIndexEmpty(weakPoint))
+    return get_random(availableWeakPoints)
   }
 }
