@@ -36,7 +36,6 @@ describe('TicTacToeGame component', () => {
     for (let i = 0; i < 9; i++) {
       const position = getByTestId(`${i}-${PlayerMark.O}`);
       if (position.getAttribute('class') !== 'hidden'){
-        console.log(`Found hidden class ${i} for O`)
         aiPlays.push(i);
       }
     }

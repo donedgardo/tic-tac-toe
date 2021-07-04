@@ -4,6 +4,14 @@ Test driven development of the game tic-tac-toe
 
 [Demo](https://tictactoe.edgardocarreras.com)
 
+### Run Locally 
+1) Install dependencies `yarn install` on root folder
+2) `cd packages/web-ui-react && yarn dev`
+3) Visit http://localhost:3000 
+
+### Run Tests
+1)`yarn test` on root folder 
+
 ### Packages
 
 ##### GameState
