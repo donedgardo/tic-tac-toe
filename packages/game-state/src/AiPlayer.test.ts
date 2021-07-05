@@ -85,6 +85,6 @@ describe('AggressiveAiPlayer', function () {
     game.play(1, aggressiveAiPlayer.getOpponentMark());
     game.play(aggressiveAiPlayer.getPlayIndex(game.getBoard()), aggressiveAiPlayer.mark)
     game.play(3, aggressiveAiPlayer.getOpponentMark());
-    expect(aggressiveAiPlayer.getPlayIndex(game.getBoard())).toBe(0)
+    expect(aggressiveAiPlayer.getPlayIndex(game.getBoard())).toBe(2)
   })
 })
