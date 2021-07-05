@@ -3,6 +3,6 @@ export * from "./PlayerMark";
 export * from "./BoardState";
 export * from "./Board";
 export * from "./winningPlaysByPositionMap"
-export * from "./AggressiveAiPlayer"
+export * from "./AiPlayer"
 
 export default GameState;

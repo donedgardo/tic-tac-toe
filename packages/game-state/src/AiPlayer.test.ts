@@ -1,9 +1,9 @@
 import GameState from './GameState';
 import {PlayerMark} from './PlayerMark';
-import {AggressiveAiPlayer} from './AggressiveAiPlayer';
+import {AiPlayer} from './AiPlayer';
 import {corners, get_random, oppositeCornerMap, weakPoints} from './winningPlaysByPositionMap';
 
-function setTrap(aggressiveAiPlayer: AggressiveAiPlayer, game: GameState) {
+function setTrap(aggressiveAiPlayer: AiPlayer, game: GameState) {
   const firstPlay = aggressiveAiPlayer.getPlayIndex(game.getBoard());
   game.play(firstPlay, aggressiveAiPlayer.mark);
   const corners = aggressiveAiPlayer.getCornersAvailable(game.getBoard());
@@ -13,15 +13,14 @@ function setTrap(aggressiveAiPlayer: AggressiveAiPlayer, game: GameState) {
   );
 }
 
-
 describe('AggressiveAiPlayer', function () {
   let game: GameState;
-  let aggressiveAiPlayer: AggressiveAiPlayer;
-  let secondAiPlayer: AggressiveAiPlayer;
+  let aggressiveAiPlayer: AiPlayer;
+  let secondAiPlayer: AiPlayer;
   beforeEach(() => {
     game = new GameState();
-    aggressiveAiPlayer = new AggressiveAiPlayer(PlayerMark.X);
-    secondAiPlayer = new AggressiveAiPlayer(PlayerMark.O);
+    aggressiveAiPlayer = new AiPlayer(PlayerMark.X);
+    secondAiPlayer = new AiPlayer(PlayerMark.O);
 
   });
   it('is Unbeatable', () => {
@@ -76,12 +75,16 @@ describe('AggressiveAiPlayer', function () {
       turn++;
     }
     expect(game.getWinner()).toBe(aggressiveAiPlayer.mark);
-  });
+  })
   it.each([corners])('should play opposite corner of i% if opponent played in the middle second turn', (corner) => {
     game.play(corner, aggressiveAiPlayer.mark);
     game.play(4, aggressiveAiPlayer.getOpponentMark());
     expect(aggressiveAiPlayer.getPlayIndex(game.getBoard())).toBe(oppositeCornerMap[corner])
   })
-
-
-});
+  it('should not loose to a fork trap', () => {
+    game.play(1, aggressiveAiPlayer.getOpponentMark());
+    game.play(aggressiveAiPlayer.getPlayIndex(game.getBoard()), aggressiveAiPlayer.mark)
+    game.play(3, aggressiveAiPlayer.getOpponentMark());
+    expect(aggressiveAiPlayer.getPlayIndex(game.getBoard())).toBe(0)
+  })
+})

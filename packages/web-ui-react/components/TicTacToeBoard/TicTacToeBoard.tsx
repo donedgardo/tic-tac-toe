@@ -2,7 +2,6 @@ import styles from './TicTacToeBoard.module.css';
 import {
   PlayerMark,
   BoardState,
-  Board,
   WINNING_PLAY_LABELS,
 } from '@tic-tac-toe/game-state';
 

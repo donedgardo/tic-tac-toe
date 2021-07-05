@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import TicTacToeBoard from '~/components/TicTacToeBoard/TicTacToeBoard';
 import GameState, {
-  AggressiveAiPlayer,
+  AiPlayer,
   BoardState,
   PlayerMark,
   WINNING_PLAY_LABELS,
@@ -17,8 +17,8 @@ const TicTacToeGame = ({
   mainPlayerMark,
 }: TicTacToeGameProps) => {
   const [game, setGame] = useState<GameState>(new GameState());
-  const aiPlayer = useMemo<AggressiveAiPlayer>(
-    () => new AggressiveAiPlayer(aiPlayerMark),
+  const aiPlayer = useMemo<AiPlayer>(
+    () => new AiPlayer(aiPlayerMark),
     [aiPlayerMark],
   );
   const [boardState, setBoardState] = useState<BoardState>();
