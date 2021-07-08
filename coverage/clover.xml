@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1625462023656" clover="3.2.0">
-  <project timestamp="1625462023656" name="All files">
-    <metrics statements="188" coveredstatements="183" conditionals="168" coveredconditionals="140" methods="63" coveredmethods="61" elements="419" coveredelements="384" complexity="0" loc="188" ncloc="188" packages="2" files="11" classes="11"/>
+<coverage generated="1625462690431" clover="3.2.0">
+  <project timestamp="1625462690431" name="All files">
+    <metrics statements="188" coveredstatements="183" conditionals="168" coveredconditionals="139" methods="63" coveredmethods="61" elements="419" coveredelements="383" complexity="0" loc="188" ncloc="188" packages="2" files="11" classes="11"/>
     <package name="game-state.src">
-      <metrics statements="134" coveredstatements="133" conditionals="62" coveredconditionals="59" methods="44" coveredmethods="44"/>
+      <metrics statements="134" coveredstatements="133" conditionals="62" coveredconditionals="58" methods="44" coveredmethods="44"/>
       <file name="AiPlayer.ts" path="/Users/ecarreras/tic-tac-toe/packages/game-state/src/AiPlayer.ts">
-        <metrics statements="69" coveredstatements="68" conditionals="43" coveredconditionals="41" methods="21" coveredmethods="21"/>
+        <metrics statements="69" coveredstatements="68" conditionals="43" coveredconditionals="40" methods="21" coveredmethods="21"/>
         <line num="8" count="17" type="stmt"/>
         <line num="12" count="30" type="stmt"/>
         <line num="13" count="30" type="cond" truecount="4" falsecount="0"/>
@@ -25,43 +25,43 @@
         <line num="38" count="148" type="stmt"/>
         <line num="42" count="30" type="stmt"/>
         <line num="43" count="30" type="cond" truecount="2" falsecount="0"/>
-        <line num="44" count="28" type="stmt"/>
-        <line num="45" count="28" type="stmt"/>
+        <line num="44" count="26" type="stmt"/>
+        <line num="45" count="26" type="stmt"/>
         <line num="49" count="18" type="stmt"/>
         <line num="53" count="4" type="stmt"/>
         <line num="54" count="4" type="stmt"/>
         <line num="55" count="4" type="stmt"/>
-        <line num="56" count="14" type="cond" truecount="2" falsecount="0"/>
-        <line num="57" count="12" type="stmt"/>
-        <line num="58" count="12" type="stmt"/>
-        <line num="59" count="12" type="stmt"/>
-        <line num="60" count="12" type="cond" truecount="2" falsecount="0"/>
-        <line num="61" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="56" count="13" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="11" type="stmt"/>
+        <line num="58" count="11" type="stmt"/>
+        <line num="59" count="11" type="stmt"/>
+        <line num="60" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="61" count="5" type="cond" truecount="1" falsecount="1"/>
         <line num="62" count="2" type="stmt"/>
         <line num="63" count="2" type="stmt"/>
         <line num="66" count="4" type="stmt"/>
-        <line num="70" count="58" type="cond" truecount="2" falsecount="0"/>
-        <line num="74" count="38" type="stmt"/>
-        <line num="75" count="38" type="cond" truecount="2" falsecount="0"/>
+        <line num="70" count="56" type="cond" truecount="2" falsecount="0"/>
+        <line num="74" count="37" type="stmt"/>
+        <line num="75" count="37" type="cond" truecount="2" falsecount="0"/>
         <line num="76" count="29" type="stmt"/>
         <line num="77" count="29" type="stmt"/>
-        <line num="81" count="253" type="stmt"/>
+        <line num="81" count="251" type="stmt"/>
         <line num="85" count="8" type="cond" truecount="2" falsecount="0"/>
         <line num="89" count="10" type="cond" truecount="3" falsecount="0"/>
-        <line num="93" count="253" type="stmt"/>
-        <line num="94" count="253" type="stmt"/>
-        <line num="95" count="253" type="stmt"/>
-        <line num="96" count="1577" type="stmt"/>
-        <line num="100" count="1577" type="cond" truecount="2" falsecount="0"/>
-        <line num="102" count="253" type="stmt"/>
+        <line num="93" count="251" type="stmt"/>
+        <line num="94" count="251" type="stmt"/>
+        <line num="95" count="251" type="stmt"/>
+        <line num="96" count="1567" type="stmt"/>
+        <line num="100" count="1567" type="cond" truecount="2" falsecount="0"/>
+        <line num="102" count="251" type="stmt"/>
         <line num="106" count="2" type="stmt"/>
         <line num="107" count="2" type="stmt"/>
         <line num="108" count="12" type="stmt"/>
-        <line num="109" count="5" type="stmt"/>
-        <line num="110" count="5" type="stmt"/>
-        <line num="111" count="5" type="stmt"/>
-        <line num="112" count="5" type="stmt"/>
-        <line num="113" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="109" count="4" type="stmt"/>
+        <line num="110" count="4" type="stmt"/>
+        <line num="111" count="4" type="stmt"/>
+        <line num="112" count="4" type="stmt"/>
+        <line num="113" count="4" type="cond" truecount="2" falsecount="0"/>
         <line num="114" count="2" type="stmt"/>
         <line num="115" count="2" type="stmt"/>
         <line num="118" count="2" type="cond" truecount="1" falsecount="1"/>
@@ -73,37 +73,37 @@
         <line num="127" count="181" type="stmt"/>
         <line num="128" count="181" type="stmt"/>
         <line num="129" count="181" type="cond" truecount="2" falsecount="0"/>
-        <line num="130" count="5" type="stmt"/>
+        <line num="130" count="4" type="stmt"/>
         <line num="132" count="25" type="stmt"/>
       </file>
       <file name="Board.ts" path="/Users/ecarreras/tic-tac-toe/packages/game-state/src/Board.ts">
         <metrics statements="32" coveredstatements="32" conditionals="15" coveredconditionals="14" methods="14" coveredmethods="14"/>
-        <line num="11" count="273" type="stmt"/>
-        <line num="14" count="258" type="stmt"/>
-        <line num="18" count="407" type="stmt"/>
-        <line num="19" count="407" type="stmt"/>
-        <line num="20" count="3663" type="cond" truecount="2" falsecount="0"/>
-        <line num="22" count="407" type="stmt"/>
-        <line num="26" count="4103" type="stmt"/>
-        <line num="30" count="281" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="271" type="stmt"/>
+        <line num="14" count="256" type="stmt"/>
+        <line num="18" count="405" type="stmt"/>
+        <line num="19" count="405" type="stmt"/>
+        <line num="20" count="3645" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="405" type="stmt"/>
+        <line num="26" count="4082" type="stmt"/>
+        <line num="30" count="278" type="cond" truecount="2" falsecount="0"/>
         <line num="31" count="1" type="stmt"/>
-        <line num="32" count="280" type="stmt"/>
+        <line num="32" count="277" type="stmt"/>
         <line num="36" count="3" type="stmt"/>
         <line num="37" count="3" type="stmt"/>
         <line num="38" count="27" type="cond" truecount="2" falsecount="0"/>
         <line num="40" count="3" type="stmt"/>
         <line num="44" count="28" type="stmt"/>
-        <line num="48" count="1648" type="stmt"/>
-        <line num="49" count="1648" type="stmt"/>
-        <line num="50" count="1648" type="stmt"/>
-        <line num="51" count="4118" type="stmt"/>
-        <line num="52" count="12354" type="cond" truecount="2" falsecount="0"/>
-        <line num="53" count="8236" type="stmt"/>
-        <line num="55" count="4118" type="stmt"/>
-        <line num="56" count="6765" type="stmt"/>
-        <line num="58" count="4118" type="cond" truecount="2" falsecount="0"/>
-        <line num="59" count="4118" type="stmt"/>
-        <line num="61" count="1648" type="stmt"/>
+        <line num="48" count="1638" type="stmt"/>
+        <line num="49" count="1638" type="stmt"/>
+        <line num="50" count="1638" type="stmt"/>
+        <line num="51" count="4073" type="stmt"/>
+        <line num="52" count="12219" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="8146" type="stmt"/>
+        <line num="55" count="4073" type="stmt"/>
+        <line num="56" count="6670" type="stmt"/>
+        <line num="58" count="4073" type="cond" truecount="2" falsecount="0"/>
+        <line num="59" count="4073" type="stmt"/>
+        <line num="61" count="1638" type="stmt"/>
         <line num="65" count="30" type="stmt"/>
         <line num="69" count="2" type="stmt"/>
         <line num="70" count="2" type="stmt"/>
@@ -163,7 +163,7 @@
         <line num="72" count="5" type="stmt"/>
         <line num="74" count="5" type="stmt"/>
         <line num="76" count="5" type="stmt"/>
-        <line num="79" count="30" type="stmt"/>
+        <line num="79" count="28" type="stmt"/>
       </file>
     </package>
     <package name="web-ui-react.components.TicTacToeBoard">
