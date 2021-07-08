@@ -104,7 +104,7 @@ export class AiPlayer extends Player {
 
   private getOpponentCrossPlayCounter(opponentCrossWinningPlay: number, board: Board): number {
     const availablePlayIndexes = board.getEmptyIndexes();
-    let counterPlay: number;
+    let counterPlay: number | null = null;
     availablePlayIndexes.filter(i=> i !== opponentCrossWinningPlay).some(possibleCounter => {
       const predictionBoard = new Board(board.getState());
       predictionBoard.play(possibleCounter, this.mark);
